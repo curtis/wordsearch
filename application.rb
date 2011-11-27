@@ -28,7 +28,7 @@ end
 
 post '/' do
   @words  = Word.parse(params.delete('words'))
-  @errors = @words.empty? or (not @words.all?(&:valid?))
+  @errors = (@words.empty? or (not @words.all?(&:valid?)))
 
   if @errors
     haml :root
