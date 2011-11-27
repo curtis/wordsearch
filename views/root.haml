@@ -1,0 +1,35 @@
+%p Welcome to my wordsearch page. Enter some words below and create your own puzzle!
+
+%h2 Rules
+
+%ul
+  %li Enter up to 8 words
+  %li Words must be 2 - 10  letters
+  %li Words must contain only alphabetical characters
+
+- if @errors
+  %p.error One or more of your words is invalid. Please check your words and try again.
+
+%form{:action => '/', :method => 'POST'}
+  .field
+    %label{:for => 'title'} Give your puzzle a name
+    %input{:type => 'text', :name => 'title', :value => params[:title], :id => 'title'}
+
+  %fieldset
+    %legend What words should be in the puzzle?
+
+    %ol
+      - 8.times do |i|
+        %li
+          %input{:type => 'text', :name => 'words[]', :value => (@words[i].nil? ? '' : @words[i].value)}
+
+  %fieldset
+    %legend Puzzle options
+
+    .field
+      %label
+        %input{:type => 'checkbox', :name => 'allow_reverse', :value => params[:allow_reverse]}
+        Allow words to be reversed?
+
+  .actions
+    %input{:type => 'submit', :value => 'Create your WordSearch'}

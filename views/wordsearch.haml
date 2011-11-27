@@ -1,0 +1,15 @@
+%h1= @wordsearch.title
+
+#puzzle
+  %table
+    - @wordsearch.rows.each do |row|
+      %tr
+        - row.each do |col|
+          %td= col
+
+  #words
+    %h2 Find these words!
+    %ul
+      - @words.sort.each do |word|
+        %li= word.value
+  
