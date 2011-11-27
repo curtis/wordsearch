@@ -3,6 +3,7 @@ source :rubygems
 gem 'sinatra'
 
 gem 'haml'
+gem 'heroku'
 gem 'rake'
 
 group :development do
