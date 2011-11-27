@@ -20,8 +20,14 @@
 
     %ol
       - 8.times do |i|
+        - if @words[i].nil?
+          - value = ''
+          - html_class = ''
+        - else
+          - value = @words[i].value
+          - html_class = (@words[i].valid? ? '' : 'error')
         %li
-          %input{:type => 'text', :name => 'words[]', :value => (@words[i].nil? ? '' : @words[i].value)}
+          %input{:type => 'text', :name => 'words[]', :value => value, :class => html_class }
 
   %fieldset
     %legend Puzzle options
